@@ -115,6 +115,16 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<scmCommentPrefix>[ci skip]</scmCommentPrefix>
+					<tagNameFormat>@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -124,13 +134,5 @@
 			<url>https://maven.pkg.github.com/willake/fizzy-budget-common</url>
 		</repository>
 	</repositories>
-
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>GitHub Fizzy Budget Common Library</name>
-			<url>https://maven.pkg.github.com/willake/fizzy-budget-common</url>
-		</repository>
-	</distributionManagement>
 
 </project>
