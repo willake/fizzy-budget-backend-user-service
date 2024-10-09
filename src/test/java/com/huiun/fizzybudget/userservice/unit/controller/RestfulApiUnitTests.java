@@ -20,21 +20,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
-
-import java.util.List;
-import java.util.Optional;
-
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc(addFilters = false)
 @WebMvcTest(UserController.class)
-public class UserControllerTests {
+public class RestfulApiUnitTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -58,13 +57,13 @@ public class UserControllerTests {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-//        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
         // create default user role
         List<Role> roles = TestEntityFactory.createDefaultRoles();
         userRole = roles.get(0);
         managerRole = roles.get(1);
 
         testUser = TestEntityFactory.createDefaultUser(roles);
+        testUser.setId(1L);
     }
 
     @Test
@@ -72,7 +71,7 @@ public class UserControllerTests {
         when(userService.findUserByUserId(testUser.getId())).thenReturn(Optional.of(testUser));
         when(passwordEncoder.encode(anyString())).thenReturn("123");
 
-        mockMvc.perform(get("/api/v1/users/1"))
+        mockMvc.perform(get("/api/v1/users/" + testUser.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
         // maybe also verify the content of the json

@@ -1,11 +1,11 @@
 # Use a base image with JDK
-FROM openjdk:22-jdk-alpine
+FROM openjdk:17-jdk-alpine
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the application jar to the container
-COPY target/user-service.jar /app/user-service.jar
+# Copy the application jar to the container using a wildcard
+COPY target/user-service-*.jar /app/user-service.jar
 
 # Expose the port the app runs on
 EXPOSE 8080

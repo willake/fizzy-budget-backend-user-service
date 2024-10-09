@@ -21,10 +21,10 @@
 		<developer/>
 	</developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
+		<connection>scm:git:https://github.com/willake/fizzy-budget-backend-user-service.git</connection>
+		<developerConnection>scm:git:https://github.com/willake/fizzy-budget-backend-user-service.git</developerConnection>
+		<url>https://github.com/willake/fizzy-budget-backend-user-service</url>
 		<tag/>
-		<url/>
 	</scm>
 	<properties>
 		<java.version>22</java.version>
