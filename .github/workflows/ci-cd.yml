@@ -20,6 +20,14 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
+    env:
+      # For running Tests
+      DB_URL: "jdbc:h2:mem:testdb"
+      DB_USERNAME: "sa"
+      DB_PASSWORD: ""
+      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      JWT_EXPIRATION: "3600000"
+
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
