@@ -106,7 +106,7 @@ jobs:
     - name: Log in to Docker Hub
       env:
         DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-      run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u willakelin@gmail.com --password-stdin
+      run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u willake --password-stdin
 
     - name: Push Docker image
-      run: docker push your-docker-username/user-service:${{ github.sha }}
+      run: docker push willake/user-service:${{ github.sha }}
