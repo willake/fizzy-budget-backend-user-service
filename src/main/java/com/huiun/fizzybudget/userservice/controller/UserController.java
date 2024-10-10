@@ -19,11 +19,15 @@ import java.util.Optional;
 @RequestMapping("/api/v1/users")
 public class UserController {
 
-    @Autowired
     private UserService userService;
 
-    @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserByUserId(@PathVariable Long userId) {

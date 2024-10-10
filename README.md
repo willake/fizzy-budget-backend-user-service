@@ -1,4 +1,4 @@
-﻿# Fizzy Budget Backend
+﻿# Fizzy Budget Backend User Service
 
 Fizzy budget is a budget tracking web app. It allows users to create account and insert their recent expense. The budget app will generate a report and an AI generated comment for your monthly expense.
 
