@@ -56,6 +56,20 @@ jobs:
         git config --global user.email "actions@users.noreply.github.com"
         git config --global user.name "GitHub Action"
 
+    # Configure Maven settings to authenticate with GitHub Packages
+    - name: Set up Maven settings
+      run: |
+        mkdir -p ~/.m2
+        echo "<settings>
+          <servers>
+            <server>
+              <id>github</id>
+              <username>${{ github.actor }}</username>
+              <password>${{ secrets.GITHUB_TOKEN }}</password>
+            </server>
+          </servers>
+        </settings>" > ~/.m2/settings.xml
+
     - name: Build the project
       run: mvn clean package -DskipTests
 
