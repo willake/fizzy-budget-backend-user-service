@@ -50,15 +50,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    # TOD: For auto configure version number
     - name: Configure Git user
       run: |
         git config --global user.email "actions@users.noreply.github.com"
         git config --global user.name "GitHub Action"
-
-    - name: Update version number
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: mvn release:prepare release:perform -DskipDeploy=true -DskipTests
 
     - name: Build the project
       run: mvn clean package -DskipTests
