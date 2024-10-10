@@ -71,7 +71,7 @@ jobs:
         </settings>" > ~/.m2/settings.xml
 
     - name: Build the project
-      run: mvn clean package -DskipTests
+      run: mvn clean package -DskipTests -X
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
