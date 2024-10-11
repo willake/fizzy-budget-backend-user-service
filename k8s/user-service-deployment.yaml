@@ -1,0 +1,47 @@
+# user-service-user-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  namespace: production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+        - name: user-service
+          image: willake/user-service:8b66484b4ca69778864532c7c5c24b6a9f6ff8d8   # Your Docker image
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL   # Database connection string environment variable
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: DB_URL
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: DB_PASSWORD
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: auth-secrets
+                  key: JWT_SECRET_KEY
+            - name: JWT_EXPIRATION
+              valueFrom:
+                configMapKeyRef:
+                  name: jwt-config
+                  key: JWT_EXPIRATION

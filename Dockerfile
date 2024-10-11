@@ -1,5 +1,5 @@
 # Use a base image with JDK
-FROM openjdk:17-jdk-alpine
+FROM openjdk:22-jdk
 
 # Set the working directory
 WORKDIR /app
