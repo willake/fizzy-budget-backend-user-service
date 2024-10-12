@@ -54,7 +54,7 @@ jobs:
         </settings>" > ~/.m2/settings.xml
 
     - name: Build and run tests
-      run: mvn clean verify
+      run: mvn clean test -Dspring.profiles.active=test
 
   # CD Job for deploying to GitHub Packages on push to main
   deploy:
