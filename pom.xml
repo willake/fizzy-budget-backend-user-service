@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>com.huiun.fizzybudget</groupId>
 			<artifactId>common</artifactId>
-			<version>0.1.2</version>
+			<version>0.1.5</version>
 		</dependency>
 	</dependencies>
 
