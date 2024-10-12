@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: willake/user-service:8b66484b4ca69778864532c7c5c24b6a9f6ff8d8   # Your Docker image
+          image: willake/user-service:b476c94f571ce5c9441af9891ef12c5036012af9   # Your Docker image
           ports:
             - containerPort: 8080
           env:
