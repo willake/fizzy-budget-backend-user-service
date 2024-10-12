@@ -26,14 +26,8 @@ CREATE TABLE `app_user` (
 
 CREATE TABLE `role` (
     role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    role_name VARCHAR(50) NOT NULL
+    role_name VARCHAR(50) UNIQUE NOT NULL
 );
-
-INSERT INTO `role` (role_name)
-VALUES
-('ROLE_USER'),
-('ROLE_MANAGER'),
-('ROLE_ADMIN');
 
 CREATE TABLE `user_role` (
     user_id BIGINT,
